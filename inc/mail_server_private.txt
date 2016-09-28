@@ -1,0 +1,15 @@
+From:
+{name}
+
+Phone:
+{phone}
+
+Fax:
+{fax}
+
+{email}
+
+{location}
+
+Ad Content:
+{adcontent}

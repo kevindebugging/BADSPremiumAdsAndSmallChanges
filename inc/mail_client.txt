@@ -1,0 +1,32 @@
+Dear {name},
+
+Thank you for sending the following messsage to Bali Advertiser.
+
+From:
+{name}
+
+Company:
+{company}
+
+Address:
+{address}
+{city}
+{state}
+{country}
+{postcode}
+
+Phone:
+{phone}
+
+Fax:
+{fax}
+
+{email}
+
+Subject:
+{subject}
+
+Comments:
+{comments}
+
+Bali Advertiser - Advertising For The Expatriate Community

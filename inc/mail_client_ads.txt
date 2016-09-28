@@ -1,0 +1,132 @@
+Dear {name}
+
+Thank you for placing the following ad in Bali Advertiser.
+
+From:
+{name}
+
+Address:
+{address}
+{city}
+{state}
+{country}
+{postcode}
+
+Phone:
+{phone}
+
+Fax:
+{fax}
+
+{email}
+
+{location}
+
+Ad Content:
+{adcontent}
+
+Number Of Words: {wc}
+Price Per Word: Rp {price_word}
+Price Per Issue: Rp {price_issue}
+No. Of Issues: {issues}
+Payment Due: Rp {total}
+
+Payment Method:
+{payment}
+
+
+You have chosen to pay for your ad by {payment}, please note that no ads will be printed before payment is made.
+
+If paying in cash you need to do this in person at the Bali Advertiser office.
+
+If paying by bank transfer please see bank account details below.
+
+If paying by PayPal, our staff will email you shortly with the payment due and our PayPal account information. 
+Your ad will be placed once payment has been received. Please note we only accept US Dollar payments at PayPal. The payment due includes a surcharge of 5% for PayPal related charges. 
+If you do not receive an email from Bali Advertiser with the payment due and our account information with in several days, please email direct to Bali Advertiser at info@baliadvertiser.biz
+
+Your ad will be placed once payment has been received.
+
+Bank Account Details
+
+Bank Permata - Legian Branch- Jl. Legian, Kuta
+Bank Code: BBBAIDJA
+Account Name: PT Citra Bali Advertiser
+Account #: 5801299131
+
+	 or 
+
+Bank BCA - Cokroaminoto Branch - Jl Cokroaminoto 32E, Denpasar
+Bank Code: CENAIDJA
+Account Name: PT Citra Bali Advertiser
+Account #: 4350114799
+
+Dear {name}
+
+Thank you for placing the following ad in Bali Advertiser.
+
+Ad Type:
+".$_POST['adtype']."
+
+From:
+{name}
+
+Address:
+{address}
+{city}
+{state}
+{country}
+{postcode}
+
+Phone:
+{phone}
+
+Fax:
+{fax}
+
+Email:
+{email}
+
+Location:
+{location}
+
+Ad Content:
+{adcontent}
+
+Number Of Words: {wc}
+Price Per Word: Rp {price_word}
+Price Per Issue: Rp {price_issue}
+No. Of Issues: {issues}
+Payment Due: Rp {total}
+
+Payment Method:
+{payment}
+
+
+You have chosen to pay for your ad by {payment}, please note that no ads will be printed before payment is made.
+
+If paying in cash you need to do this in person at the Bali Advertiser office.
+
+If paying by bank transfer please see bank account details below. You will need to fax or email a copy of the transfer to Bali Advertiser. Your ad will be published only after payment has been confirmed.
+
+If paying by PayPal, our staff will email you shortly with the payment due and our PayPal account information.
+Your ad will be placed once payment has been received. Please note we only accept US Dollar payments at PayPal. The payment due includes a surcharge of 5% for PayPal related charges.
+
+If you do not receive an email from Bali Advertiser with the payment due and our account information with in several days, please email direct to Bali Advertiser at info@baliadvertiser.biz
+
+Your ad will be placed once payment has been received.
+
+Bank Account Details
+
+Bank Permata - Legian Branch- Jl. Legian, Kuta
+
+Bank Code: BBBAIDJA
+Account Name: PT Citra Bali Advertiser
+Account #: 5801299131
+
+or
+
+Bank BCA - Cokroaminoto Branch - Jl Cokroaminoto 32E, Denpasar
+Bank Code: CENAIDJA
+Account Name: PT Citra Bali Advertiser
+Account #: 4350114799

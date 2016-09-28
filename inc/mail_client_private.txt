@@ -1,0 +1,23 @@
+Dear {name}
+
+Thank you for placing the following ad in Bali Advertiser.
+
+From:
+{name}
+
+Phone:
+{phone}
+
+Fax:
+{fax}
+
+{email}
+
+{location}
+
+Ad Content:
+{adcontent}
+
+Your ad will appear in the next edition of Bali Advertiser.
+
+Please note that items for sale without a location specified will not be published.

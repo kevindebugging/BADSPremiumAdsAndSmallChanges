@@ -1,0 +1,49 @@
+<html>
+<head>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+	<style>
+	[prev]{cursor:pointer; }
+	#preview { background:rgba(255,255,255,0.8; top:0; left:50%; right:0; position:absolute; width:49%;}
+	</style>
+</head>
+<body>
+<div id="preview"></div>
+<h5 style='margin-top50em;'>Processing:</h5>
+<div id="current"></div>
+<script>
+	var conten;
+	var cat = ["altvoice", "bali_explorer", "bali_kids", "balipc", "beauty_discovery", "beauty_health", "dvd_diary", "feature", "fixed_abode", "food_glorious", "frugal", "garden_doctor", "greenspeak", "hector", "horoscope", "kulturekid", "money_matters", "music_matters", "news", "numdeplum", "paradise", "pathways", "retail", "sanur_scoop", "siapa", "social_media", "sporting", "tokobuku", "ubudnews", "ubudwriters"];
+	function recurse_post(cat){
+		conte=eval(window.conten);
+		if((typeof conte !=="undefined") && (cont=conte.pop())){
+			window.conten = conte;
+			$.ajax({
+				"url":"/newsite14/wp-content/themes/baliadvertiser/inc/import.php",
+				"data":{"act":"post","url":cont,"cat":cat},
+				"type":"post",
+				success:function(res){
+					$("#current").append("<p prev='"+res+"'>"+cat+" : "+cont+"</p>");
+					if (recurse_post(cat)=="ok") return "ok";
+				}
+			});
+		} else { recurse(); }
+	}
+	function recurse(){
+		if(cate=cat.pop()){
+			$.ajax({
+				"url":"/newsite14/wp-content/themes/baliadvertiser/inc/import.php",
+				"data":{"act":"list","cat":cate},
+				"type":"post",
+				success:function(res){
+					window.conten=res;
+					if (recurse_post(cate)=="ok") recurse();
+				}
+			});
+		}
+	}
+	recurse();
+	$("body").delegate("[prev]","click",function(){
+		$("#preview").html($(this).attr('prev'));
+	});
+</script>
+</body>

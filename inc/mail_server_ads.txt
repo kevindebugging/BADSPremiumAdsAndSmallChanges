@@ -1,0 +1,31 @@
+From:
+{name}
+
+Address:
+{address}
+{city}
+{state}
+{country}
+{postcode}
+
+Phone:
+{phone}
+
+Fax:
+{fax}
+
+{email}
+
+{location}
+
+Ad Content:
+{adcontent}
+
+Number Of Words: {wc}
+Price Per Word: Rp {price_word}
+Price Per Issue: Rp {price_issue}
+No. Of Issues: {issues}
+Payment Due: Rp {total}
+
+Payment Method:
+{payment}
