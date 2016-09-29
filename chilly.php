@@ -493,7 +493,7 @@ For International Transfers The Sender Must Pay All Charges So That Bali Adverti
 
         <h3>Your Ad Text</h3>
 
-        <?php echo $adtextareacontent;?>
+         <div id="your-ad-text"><?php echo $adtextareacontent;?></div>
 
         <div class="important">Please check that you have entered a contact number and/or email address for replies to this ad in your Ad Content above.</div>
 
@@ -524,7 +524,9 @@ For International Transfers The Sender Must Pay All Charges So That Bali Adverti
       $(document).ready(function(){
 
         //alert("doc read 1");
-
+        if($('#premium').is(':checked')){
+          $('#your-ad-text').css('color', '#f00');
+        }
 
 
       $('.QapTcha').QapTcha({
@@ -677,7 +679,7 @@ For International Transfers The Sender Must Pay All Charges So That Bali Adverti
 
       "label"=>"Real Estate",
 
-      "add"=>"issues,payment,location",
+      "add"=>"issues,payment,location,premium",
 
       "min"=>30,"max"=>-1,
 
@@ -689,7 +691,7 @@ For International Transfers The Sender Must Pay All Charges So That Bali Adverti
 
       "label"=>"Looking for Real Estate",
 
-      "add"=>"issues,payment",
+      "add"=>"issues,payment,premium",
 
       "min"=>1,"max"=>-1,
 
@@ -699,9 +701,9 @@ For International Transfers The Sender Must Pay All Charges So That Bali Adverti
 
     "employees"=>array(
 
-      "label"=>"Looking for Staff", /* Previously Employees Wanted */
+      "label"=>"Looking for Staff", /* Previous name: Employees Wanted */
 
-      "add"=>"issues,payment",
+      "add"=>"issues,payment,premium",
 
       "min"=>1,"max"=>-1,
 
@@ -713,7 +715,7 @@ For International Transfers The Sender Must Pay All Charges So That Bali Adverti
 
       "label"=>"Looking for Work", /* Previous name: Employment Wanted */
 
-      "add"=>"issues,payment",
+      "add"=>"issues,payment,premium",
 
       "min"=>1,"max"=>-1,
 
@@ -725,7 +727,7 @@ For International Transfers The Sender Must Pay All Charges So That Bali Adverti
 
       "label"=>"Business Services",
 
-      "add"=>"issues,payment",
+      "add"=>"issues,payment,premium",
 
       "min"=>1,"max"=>-1,
 
@@ -737,7 +739,7 @@ For International Transfers The Sender Must Pay All Charges So That Bali Adverti
 
       "label"=>"Hello Ads",
 
-      "add"=>"issues,payment",
+      "add"=>"issues,payment,premium",
 
       "min"=>1,"max"=>-1,
 
@@ -749,7 +751,7 @@ For International Transfers The Sender Must Pay All Charges So That Bali Adverti
 
       "label"=>"Cars, Motorcycle, Watercraft, etc.",
 
-      "add"=>"issues,payment",
+      "add"=>"issues,payment,premium",
 
       "min"=>1,"max"=>-1,
 
@@ -761,7 +763,7 @@ For International Transfers The Sender Must Pay All Charges So That Bali Adverti
 
       "label"=>"Pet Parade",
 
-      "add"=>"issues,payment",
+      "add"=>"issues,payment,premium",
 
       "min"=>1,"max"=>-1,
 
@@ -923,6 +925,8 @@ For International Transfers The Sender Must Pay All Charges So That Bali Adverti
 
       <input type="hidden" value="<?php echo $ads[$q]['cost'];?>" id="cost" name="cost">
 
+      <input type="hidden" value="<?php echo $ads[$q]['cost'];?>" id="temp-cost" name="temp-cost">
+
       <fieldset class="col2">
 
         <legend>Your Details :</legend>
@@ -1039,7 +1043,7 @@ For International Transfers The Sender Must Pay All Charges So That Bali Adverti
 
         <table width="100%">
 
-          <?php foreach (array("email","phone","fax","company","location","state","country","postcode","issues","payment","subscribecomments") as $item){
+          <?php foreach (array("email","phone","fax","company","location","state","country","postcode","issues","payment","premium","subscribecomments") as $item){
 
             $crucial=cek_crucial($q,$item);
 
@@ -1054,6 +1058,19 @@ For International Transfers The Sender Must Pay All Charges So That Bali Adverti
                   <td><label for="<?php echo $item;?>"><?php echo ucwords($item);?> :</label></td>
 
                   <td><input id="<?php echo $item;?>" name="<?php echo $item;?>" type="email" required="required"><div class="important">*</div></td>
+
+                </tr>
+
+                <?php break;
+
+                case "premium" : ?>
+
+                 <tr>
+
+                  <td><!--<label for="<?php echo $item;?>"><?php echo ucwords($item);?> Ads :</label>--></td>
+
+                  <td><input id="<?php echo $item;?>" name="<?php echo $item;?>" type="checkbox" value="<?php echo $item;?>" style="width: inherit;"> <strong>Premium Ad</strong><br>
+                    Display your ad in red </td>
 
                 </tr>
 
@@ -1185,7 +1202,7 @@ For International Transfers The Sender Must Pay All Charges So That Bali Adverti
 
         <div class="col-sm-4" style="margin-bottom:15px">Word Count : <span id="wcount">0</span></div>
 
-        <div class="col-sm-4" style="margin-bottom:15px">Price Per Word : Rp. <span class='currency'><?php echo $ads[$q]['cost'];?></span> <?php if ($ads[$q]['min']>1) echo "<br>( Minimum <span id='min'>".$ads[$q]['min']."</span> Words ) ";?> <?php if ($ads[$q]['max']>-1) echo "<br>( Maximum ".$ads[$q]['max']." Words ) ";?></div>
+        <div class="col-sm-4" style="margin-bottom:15px">Price Per Word : Rp. <span class='currency' id='currency'><?php echo $ads[$q]['cost'];?></span> <?php if ($ads[$q]['min']>1) echo "<br>( Minimum <span id='min'>".$ads[$q]['min']."</span> Words ) ";?> <?php if ($ads[$q]['max']>-1) echo "<br>( Maximum ".$ads[$q]['max']." Words ) ";?></div>
 
         <div class="col-sm-4" style="margin-bottom:15px">Total Cost : Rp. <span id="tcost">0</span></div>
 
@@ -1393,7 +1410,7 @@ For International Transfers The Sender Must Pay All Charges So That Bali Adverti
 
             else{$("#total").val((parseInt($("#cost").val() ) * <?php if ($ads[$q]['min']>1) echo $ads[$q]['min']; else echo "wc"; ?> * Math.abs($("#issues").val())).toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,"));}
 
-	    // If value is NaN -> make it 0
+	          // If value is NaN -> make it 0
             // To fix private ads price of NaN
             if(isNaN(parseInt($("#total").val()))){
               $("#total").val(0);
@@ -1597,6 +1614,22 @@ For International Transfers The Sender Must Pay All Charges So That Bali Adverti
 
 
 
+          });
+
+          $('#premium').change(function(){
+              // Change textarea text color to red if checked
+              var c = this.checked ? '#f00' : '#333';
+              $('#adcontent').css('color', c);
+
+              // Change the base price
+              // #temp-cost is to hold the original price. Do not change the value
+              var cost = this.checked ? parseInt($("#temp-cost").val() ) * 2 : $("#temp-cost").val() ;
+
+              $("#cost").val(cost);
+              $("#currency").html(cost);
+
+              // Call this function to recalculate the price
+              recalc();
           });
 
       });
