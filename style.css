@@ -25,8 +25,9 @@ body{
 }
 
 .entry-content p{
-	line-height: 32px;
+	line-height: 28px;
 	text-align: justify;
+	margin: 0 0 15px;
 }
 
 img{
@@ -908,12 +909,24 @@ a.synved-social-button.synved-social-button-share.synved-social-size-32.synved-s
 	font-size: 13px;
 }
 .col2.det {
-	max-height: 300px;
+	max-height: 400px;
 	overflow-y: auto;
+	/*-webkit-overflow-scrolling: touch;*/
 	z-index: 1;
 	margin-bottom: 15px;
     	padding: 10px;
 }
+/*
+::-webkit-scrollbar {
+    -webkit-appearance: none;
+    width: 7px;
+}
+::-webkit-scrollbar-thumb {
+    border-radius: 4px;
+    background-color: rgba(0,0,0,.5);
+    -webkit-box-shadow: 0 0 1px rgba(255,255,255,.5);
+}
+*/
 .QapTcha{
 	display: block;
 	margin: 0 auto !important;
@@ -1194,7 +1207,7 @@ a.synved-social-button.synved-social-button-share.synved-social-size-32.synved-s
 
 
 @media only screen and (max-width: 768px){
-		#ad_close {
+		#adbuttonclose {
     			margin-top: 30px;
 		}
 		.top_nav .container ul li a{
@@ -1211,7 +1224,7 @@ a.synved-social-button.synved-social-button-share.synved-social-size-32.synved-s
 		.navbar-nav > li{
 			display: block;
 		}
-		#ad_preview > #ad_content, #check_alert > #check_content, #minword_alert > #minword_content{
+		#ad_preview > #adpreviewcontent, #check_alert > #check_content, #minword_alert > #minword_content{
 			top: 50% !important;
     			left: 0% !important;
 	    		transform: translate(0%, -50%) !important;
@@ -1221,10 +1234,10 @@ a.synved-social-button.synved-social-button-share.synved-social-size-32.synved-s
     			left: 50% !important;
     			transform: translate(-50%, -50%) !important;
 		}
-		#ad_preview > #ad_content > #ad_summary{
+		#ad_preview > #adpreviewcontent > #ad_summary{
 			padding: 6em 1em 0!important;
 		}
-		#ad_preview > #ad_content {
+		#ad_preview > #adpreviewcontent {
     			height: 100%;
 			overflow: auto;
 		}
@@ -1233,7 +1246,7 @@ a.synved-social-button.synved-social-button-share.synved-social-size-32.synved-s
     			right: -20% !important;
     			transform: translate(-50% ,-50%) !important;
 		}
-		#ad_content{
+		#adpreviewcontent{
 			min-width: 0px !important;
 			font-size: 12px;
 		}
@@ -1472,10 +1485,10 @@ a.synved-social-button.synved-social-button-share.synved-social-size-32.synved-s
 	.breadcrumbs{
 		text-align: center;
 	}
-	#ad_preview > #ad_content{
+	#ad_preview > #adpreviewcontent{
 		width: 100%;
 	}
-	#ad_content .nav-links{
+	#adpreviewcontent .nav-links{
 		padding: 0 0 0.5em;
 	}
 }
