@@ -25,8 +25,12 @@ $('#search-on-page').click(function() {
     $('#to_find').find('p').each(function (){
 
       var paragraph = $(this).text();
-      var pageText = paragraph.replace("<span>","").replace("</span>");
-    	var theRegEx = new RegExp("("+searchedText+")", "igm");
+      var removeNbsp = new RegExp("\xa0", "igm");
+      var pageText = " " + paragraph.replace(removeNbsp," ");
+
+      // Regex to find a word. A word is alphabet or numeric surround with single [ ,.!?/;:()\\[\\]]
+      // i = ignore case g = global m = multiline
+    	var theRegEx = new RegExp("([ ,.!?/;:()\\[\\]]"+searchedText+"[ ,.!?/;:()\\[\\]])", "igm");
 
       var replaced = pageText.search(theRegEx) >= 0;
       if (replaced) {
@@ -35,6 +39,7 @@ $('#search-on-page').click(function() {
         $(this).html(newHtml);
         $(this).fadeIn();
       }else{
+        $(this).html(pageText);
         $(this).fadeOut();
       }
 
@@ -55,12 +60,13 @@ $('#search-on-page').click(function() {
       $('#found-info').html(totalFound + " ads found.");
       $('#found-info').fadeIn();
       // if currentIdx > totalFound -> return back to the first found keyword
-      currentIdx++;
-      currentIdx = (currentIdx > totalFound) ? 1 : currentIdx;
-      $('#currentIdx').val(currentIdx);
-      $('html, body').animate({
-            scrollTop: $("#found-" + currentIdx).offset().top - 80
-        }, 1000);
+      // currentIdx++;
+      // currentIdx = (currentIdx > totalFound) ? 1 : currentIdx;
+      // $('#currentIdx').val(currentIdx);
+      // $('html, body').animate({
+      //       // scrollTop: $("#found-" + currentIdx).parent().offset().top - 80
+      //       scrollTop: $("#to_find").parent().offset().top - 80
+      //   }, 1000);
     }else{
       $('#nothing-found').fadeIn();
       $('#found-info').fadeOut();
