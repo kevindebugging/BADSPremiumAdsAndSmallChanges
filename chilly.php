@@ -683,7 +683,7 @@ For International Transfers The Sender Must Pay All Charges So That Bali Adverti
 
       "min"=>30,"max"=>-1,
 
-      "cost"=>13000
+      "cost"=>13000,"premium-cost" => 20000
 
       ),
 
@@ -695,7 +695,7 @@ For International Transfers The Sender Must Pay All Charges So That Bali Adverti
 
       "min"=>1,"max"=>-1,
 
-      "cost"=>13000
+      "cost"=>13000,"premium-cost" => 20000
 
       ),
 
@@ -707,7 +707,7 @@ For International Transfers The Sender Must Pay All Charges So That Bali Adverti
 
       "min"=>1,"max"=>-1,
 
-      "cost"=>20000
+      "cost"=>20000,"premium-cost" => 30000
 
       ),
 
@@ -719,7 +719,7 @@ For International Transfers The Sender Must Pay All Charges So That Bali Adverti
 
       "min"=>1,"max"=>-1,
 
-      "cost"=>20000
+      "cost"=>20000,"premium-cost" => 30000
 
       ),
 
@@ -731,7 +731,7 @@ For International Transfers The Sender Must Pay All Charges So That Bali Adverti
 
       "min"=>1,"max"=>-1,
 
-      "cost"=>13000
+      "cost"=>13000,"premium-cost" => 20000
 
       ),
 
@@ -743,7 +743,7 @@ For International Transfers The Sender Must Pay All Charges So That Bali Adverti
 
       "min"=>1,"max"=>-1,
 
-      "cost"=>13000
+      "cost"=>13000,"premium-cost" => 20000
 
       ),
 
@@ -755,7 +755,7 @@ For International Transfers The Sender Must Pay All Charges So That Bali Adverti
 
       "min"=>1,"max"=>-1,
 
-      "cost"=>13000
+      "cost"=>13000,"premium-cost" => 20000
 
       ),
 
@@ -767,7 +767,7 @@ For International Transfers The Sender Must Pay All Charges So That Bali Adverti
 
       "min"=>1,"max"=>-1,
 
-      "cost"=>13000
+      "cost"=>13000,"premium-cost" => 20000
 
       )
 
@@ -925,7 +925,9 @@ For International Transfers The Sender Must Pay All Charges So That Bali Adverti
 
       <input type="hidden" value="<?php echo $ads[$q]['cost'];?>" id="cost" name="cost">
 
-      <input type="hidden" value="<?php echo $ads[$q]['cost'];?>" id="temp-cost" name="temp-cost">
+      <input type="hidden" value="<?php echo $ads[$q]['cost'];?>" id="standard-cost" name="standard-cost">
+
+      <input type="hidden" value="<?php echo $ads[$q]['premium-cost'];?>" id="premium-cost" name="premium-cost">
 
       <fieldset class="col2">
 
@@ -1065,7 +1067,7 @@ For International Transfers The Sender Must Pay All Charges So That Bali Adverti
 
                 case "premium" : ?>
 
-                 <tr>
+                 <tr style="display:none;">
 
                   <td><!--<label for="<?php echo $item;?>"><?php echo ucwords($item);?> Ads :</label>--></td>
 
@@ -1186,11 +1188,21 @@ For International Transfers The Sender Must Pay All Charges So That Bali Adverti
 
         <legend>Ad Content</legend>
 
+        <?php if (!in_array($q,array("private"))) { ?>
+          <p style="margin: 0 0;">
+            Your ad can be printed in RED text for extra cost. Click below to choose RED text.
+          </p>
+        <?php } ?>
+
         <div class="important" style="top:10px;">*</div>
 
         <textarea id="adtextareacontent" name="adtextareacontent" required="required" rows="10" placeholder="Enter your ad content here including a contact phone number or email address for replies to this ad."></textarea>
 
-
+        <?php if (!in_array($q,array("private"))) { ?>
+        <p style="margin: 0 0;">
+          <a class="premium-text-activation-button" id="premium-text-activation-button">CLICK HERE</a> to have your text printed in RED for cost of Rp <?= $ads[$q]["premium-cost"]?> per word.
+        </p>
+        <?php } ?>
 
         <div class="footnote">* Please ensure that you have included your contact phone number and/or e-mail address for replies to this ad in the ad text that you are typing here.<br>
 
@@ -1616,14 +1628,20 @@ For International Transfers The Sender Must Pay All Charges So That Bali Adverti
 
           });
 
+          $('#premium-text-activation-button').click(function() {
+            console.log("button is clicked");
+            $('#premium').trigger("click");
+          })
+
           $('#premium').change(function(){
               // Change textarea text color to red if checked
               var c = this.checked ? '#f00' : '#333';
-              $('#adcontent').css('color', c);
+              $('#adtextareacontent').css('color', c);
 
               // Change the base price
-              // #temp-cost is to hold the original price. Do not change the value
-              var cost = this.checked ? parseInt($("#temp-cost").val() ) * 2 : $("#temp-cost").val() ;
+              // if checkbox is checked use #premium-cost as base price
+              // If checkbox is not checked use #standard-cost as base price
+              var cost = this.checked ? $("#premium-cost").val() : $("#standard-cost").val() ;
 
               $("#cost").val(cost);
               $("#currency").html(cost);
