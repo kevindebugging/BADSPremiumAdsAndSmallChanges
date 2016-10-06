@@ -1644,7 +1644,7 @@ For International Transfers The Sender Must Pay All Charges So That Bali Adverti
               var cost = this.checked ? $("#premium-cost").val() : $("#standard-cost").val() ;
 
               $("#cost").val(cost);
-              $("#currency").html(cost);
+              $("#currency").html(cost.toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,"));
 
               // Call this function to recalculate the price
               recalc();
