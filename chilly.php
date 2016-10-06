@@ -429,7 +429,7 @@ For International Transfers The Sender Must Pay All Charges So That Bali Adverti
 
     unset($data['act']);
 
-    foreach (array("wc","adtype","form_uri","cost","uri","total","adtextareacontent","comments","subject") as $item){
+    foreach (array("wc","adtype","form_uri","cost","uri","total","adtextareacontent","comments","subject", "standard-cost", "premium-cost", "premium") as $item){
 
       if(isset($data[$item])) { $$item=urldecode($data[$item]); unset($data[$item]); }
 
