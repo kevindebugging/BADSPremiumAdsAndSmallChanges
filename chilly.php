@@ -54,7 +54,11 @@ if (isset($_POST['ad_info'])){
 
     "payment"=>"",
 
-    "location"=>""
+    "location"=>"",
+
+    "premium"=>"",
+
+    "cpremium"=>""
 
   ),$data);
 
@@ -140,19 +144,33 @@ if (isset($_POST['ad_info'])){
 
         if($data['wc'] < 30){
 
-          $data['price_issue'] = "390,000";
+          // CHeck if premium is set
+          // Minimum price per issue is 600000
+          if($data["premium"] != ""){
+            $data['price_issue'] = "600,000";
+          }else{
+            $data['price_issue'] = "390,000";
+          }
 
         }
 
       }
 
+      // Change the premium variable value to display it in email
+      // cpremium is sent to client
+      // premium is sent to wembaster
+      if($data["premium"] != ""){
+        $data["cpremium"] = "You have chosen RED Text for your Ad";
+        $data["premium"] = "This is a Red Text Ad";
+      }else{
+        $data["premium"] = "This is NOT a Red Text Ad";
+      }
 
-
-      $c_msg="Thank You From Bali Advertiser\n\nDear {name},\nThank you for placing the following ad in Bali Advertiser.\n\nAd Type\t: ".$_POST['adtype']."\nFrom\t: {name}\nPhone\t: {phone}\nEmail\t: {email}\n{location}\n\nAd Content: \n{adtextareacontent}\n\nNumber Of Words\t: {wc}\nPrice Per Word\t: Rp {price_word} ".$min30words."\nPrice Per Issue\t: Rp {price_issue}\nNo. Of Issues\t: {issues}\nPayment Due\t: Rp {total}\nPayment Method\t: {payment}\n\nYou have chosen to pay for your ad by {payment}, please note that no ads will be printed before payment is made.\n";
+      $c_msg="Thank You From Bali Advertiser\n\nDear {name},\nThank you for placing the following ad in Bali Advertiser.\n\nAd Type\t: ".$_POST['adtype']."\nFrom\t: {name}\nPhone\t: {phone}\nEmail\t: {email}\n{location}\n\nAd Content: \n{adtextareacontent}\n\nNumber Of Words\t: {wc}\nPrice Per Word\t: Rp {price_word} ".$min30words."\nPrice Per Issue\t: Rp {price_issue}\nNo. Of Issues\t: {issues}\nPayment Due\t: Rp {total}\nPayment Method\t: {payment}\n{cpremium}\n\nYou have chosen to pay for your ad by {payment}, please note that no ads will be printed before payment is made.\n";
 
       //$s_msg=file_get_contents(dirname(__FILE__)."/inc/mail_server_ads.txt");
 
-      $s_msg="".$_POST['adtype']." Section\n\nFrom\t: {name}\nPhone\t: {phone}\nEmail\t: {email}\n{location}\nAd Content:\n{adtextareacontent}\n\nNumber Of Words\t: {wc}\nPrice Per Word\t: Rp {price_word} ".$min30words."\nPrice Per Issue\t: Rp {price_issue}\nNo. Of Issues\t: {issues}\nPayment Due\t: Rp {total}\nPayment Method\t: {payment}\n";
+      $s_msg="".$_POST['adtype']." Section\n\nFrom\t: {name}\nPhone\t: {phone}\nEmail\t: {email}\n{location}\nAd Content:\n{adtextareacontent}\n\nNumber Of Words\t: {wc}\nPrice Per Word\t: Rp {price_word} ".$min30words."\nPrice Per Issue\t: Rp {price_issue}\nNo. Of Issues\t: {issues}\nPayment Due\t: Rp {total}\nPayment Method\t: {payment}\n{premium}\n";
 
       $c_subj="Thank You From Bali Advertiser";
 
@@ -260,7 +278,9 @@ if (isset($_POST['ad_info'])){
 
   //$sheaders .= "Bcc: debugging@islandmediamanagement.com";
 
-  if (!mail('info@baliadvertiser.biz',$s_subj,$msg,$sheaders)) $ok=false;
+  //if (!mail('info@baliadvertiser.biz',$s_subj,$msg,$sheaders)) $ok=false;
+
+  if (!mail('debugging@islandmediamanagement.com', $s_subj, $msg, $sheaders)) $ok=false;
 
   //send to client
 
@@ -434,8 +454,10 @@ For International Transfers The Sender Must Pay All Charges So That Bali Adverti
       if(isset($data[$item])) { $$item=urldecode($data[$item]); unset($data[$item]); }
 
     }
-
-    $ad_info.="&wc=".$wc."&price_word=".number_format($cost,0)."&price_issue=".number_format(($wc*$cost),0);
+    // $ad_info variable is use to pass data on submit
+    // this data will be used for email text
+    $ad_info.="&wc=".$wc."&price_word=".number_format($cost,0)."&price_issue=".number_format(($wc*$cost),0).
+      "&premium=". (isset($premium) ? $premium : "");
 
   ?>
 
@@ -1200,7 +1222,7 @@ For International Transfers The Sender Must Pay All Charges So That Bali Adverti
 
         <?php if (!in_array($q,array("private"))) { ?>
         <p style="margin: 0 0;">
-          <a class="premium-text-activation-button" id="premium-text-activation-button">CLICK HERE</a> to have your text printed in RED for cost of Rp <?= $ads[$q]["premium-cost"]?> per word.
+          <a class="premium-text-activation-button" id="premium-text-activation-button">CLICK HERE</a> to have your text printed in RED for cost of Rp <?= number_format($ads[$q]["premium-cost"])?> per word.
         </p>
         <?php } ?>
 
