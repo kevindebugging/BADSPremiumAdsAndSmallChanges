@@ -2074,6 +2074,14 @@ width: 100%;
 	padding: 10px;
 	margin: 5px 0px;
 }
+#ad_form a.premium-text-activation-button {
+	vertical-align: middle;
+	border: 1px solid #337bbb;
+	box-shadow: 0 0 0 2px #005aaa;
+	margin: 6px;
+	padding: 2px;
+	cursor: default;
+}
 /* Custom Style for Premium Ads */
 
 /* Custom Style for Search on Page */
@@ -2084,7 +2092,7 @@ width: 100%;
 {
     background-color:yellow;
 }
-button.search-on-page {
+button.search-on-page, a.premium-text-activation-button {
     background: #005aaa;
     color: white;
     display: inline-block;
@@ -2097,7 +2105,7 @@ button.search-on-page {
     padding: 6px;
     border: none;
 }
-button.search-on-page:hover {
+button.search-on-page:hover, a.premium-text-activation-button:hover {
     color: white;
     text-decoration: initial;
 }
