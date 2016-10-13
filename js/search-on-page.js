@@ -57,6 +57,7 @@ $('#search-on-page').click(function() {
   }
     if(totalFound > 0){
       $('#nothing-found').fadeOut();
+      $('#opening-paragraph').fadeOut();
       $('#found-info').html(totalFound + " ads found.");
       $('#found-info').fadeIn();
       // if currentIdx > totalFound -> return back to the first found keyword
