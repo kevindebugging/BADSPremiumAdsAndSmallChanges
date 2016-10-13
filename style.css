@@ -2076,11 +2076,14 @@ width: 100%;
 }
 #ad_form a.premium-text-activation-button {
 	vertical-align: middle;
-	border: 1px solid #337bbb;
-	box-shadow: 0 0 0 2px #005aaa;
+	/*border: 1px solid #337bbb;
+	box-shadow: 0 0 0 2px #005aaa;*/
 	margin: 6px;
-	padding: 2px;
+	padding: 0px 2px;
 	cursor: default;
+	font-size: 12px;
+  background: #de0000;
+	cursor: pointer;
 }
 /* Custom Style for Premium Ads */
 
