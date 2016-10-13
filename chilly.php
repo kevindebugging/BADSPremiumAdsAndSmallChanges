@@ -62,21 +62,21 @@ if (isset($_POST['ad_info'])){
 
   ),$data);
 
-  $methcash = "If paying in cash you need to do this in person at the Bali Advertiser office at Jl. Majapahit #46 Kuta, Bali or you can call +62-361-755392 for more details.\n";
+  $methcash = "If paying in cash you need to do this in person at the Bali Advertiser office at Jl. Majapahit #46 Kuta, Bali or you can call +62-361-755392 for more details.<br>\n";
 
 
 
-  $methbank = "Please see bank account details below. You will need to fax or email a copy of the transfer to Bali Advertiser.\n\nBank Account Details:\n\nBank Central Asia (BCA) - Cokroaminoto Branch - Jl. Cokroaminoto No. 32 E, Denpasar\nBank Code: CENAIDJA\nAccount Name: PT. Citra Bali Pariwara\nAccount #: 4350114799\n\nOr\n\nBank Rakyat Indonesia (BRI) - Kuta Branch- Jl. Dewi Sri 99X, Kuta\nBank Code: BRINIDJA\nAccount Name: PT. Citra Bali Pariwara\nAccount #: 0556 01 000628 308\n\nFor International Transfers The Sender Must Pay All Charges So That Bali Advertiser Receives The Payment Due In Full.\n\n";
+  $methbank = "Please see bank account details below. You will need to fax or email a copy of the transfer to Bali Advertiser.<br><br>\n\nBank Account Details:<br><br>\n\nBank Central Asia (BCA) - Cokroaminoto Branch - Jl. Cokroaminoto No. 32 E, Denpasar<br>\nBank Code: CENAIDJA<br>\nAccount Name: PT. Citra Bali Pariwara<br>\nAccount #: 4350114799<br><br>\n\nOr<br><br>\n\nBank Rakyat Indonesia (BRI) - Kuta Branch- Jl. Dewi Sri 99X, Kuta<br>\nBank Code: BRINIDJA<br>\nAccount Name: PT. Citra Bali Pariwara<br>\nAccount #: 0556 01 000628 308<br><br>\n\nFor International Transfers The Sender Must Pay All Charges So That Bali Advertiser Receives The Payment Due In Full.<br><br>\n\n";
 
 
 
-  $methpaypal = "Our staff will email you shortly with the payment due and our PayPal account information. Please note we only accept US Dollar payments at PayPal. The payment due includes a surcharge of 5% for PayPal related charges.\nIf you do not receive an email from Bali Advertiser with the payment due and our account information with in several days, please email direct to Bali Advertiser at info@baliadvertiser.biz\n";
+  $methpaypal = "Our staff will email you shortly with the payment due and our PayPal account information. Please note we only accept US Dollar payments at PayPal. The payment due includes a surcharge of 5% for PayPal related charges.<br>\nIf you do not receive an email from Bali Advertiser with the payment due and our account information with in several days, please email direct to Bali Advertiser at info@baliadvertiser.biz<br>\n";
 
 
 
-  $adclosep = "Your ad will be placed once payment has been received.\n\n";
+  $adclosep = "Your ad will be placed once payment has been received.<br><br>\n\n";
 
-  $closetag = "Bali Advertiser - Advertising For The Expatriate Community\n";
+  $closetag = "Bali Advertiser - Advertising For The Expatriate Community<br>\n";
 
 
 
@@ -86,11 +86,39 @@ if (isset($_POST['ad_info'])){
 
       //$c_msg=file_get_contents(dirname(__FILE__)."/inc/mail_client_private.txt");
 
-      $c_msg="Thank You From Bali Advertiser\n\nDear {name},\nThank you for placing the following ad in Bali Advertiser.\nAd Type\t: ".$_POST['adtype']."\nFrom\t: {name}\nPhone\t: {phone}\nEmail\t: {email}\n{location}\n\nAd Content:\n{adtextareacontent}\nYour ad will appear in the next edition of Bali Advertiser.\n\nPlease note that items for sale without a location specified will not be published.\n";
+      $c_msg="Thank You From Bali Advertiser<br><br>\n\n
+      Dear {name},<br>\n
+      Thank you for placing the following ad in Bali Advertiser.<br>\n
+      <table>
+      <tr>
+      <td>Ad Type\t</td><td>: ".$_POST['adtype']."</td>\n
+      </tr><tr>
+      <td>From\t</td><td>: {name}\n</td>
+      </tr><tr>
+      <td>Phone\t</td><td>: {phone}\n</td>
+      </tr><tr>
+      <td>Email\t</td><td>: {email}\n</td>
+      </tr></table>
+      {location}<br><br>\n\n
+      Ad Content:\n<br>
+      {adtextareacontent}\n<br><br>
+      Your ad will appear in the next edition of Bali Advertiser.\n\n<br><br>
+      Please note that items for sale without a location specified will not be published.\n<br>";
 
       //$s_msg=file_get_contents(dirname(__FILE__)."/inc/mail_server_private.txt");
 
-      $s_msg="Private Classified Ad Submission\n\nFrom\t: {name}\nPhone\t: {phone}\nEmail\t: {email}\n{location}\nAd Content:\n{adtextareacontent}\n";
+      $s_msg="Private Classified Ad Submission<br><br>\n\n
+      <table>
+      <tr>
+      <td>From\t</td><td>: {name}\n</td>
+      </tr><tr>
+      <td>Phone\t</td><td>: {phone}\n</td>
+      </tr><tr>
+      <td>Email\t</td><td>: {email}\n</td>
+      </tr></table><br>
+      {location}\n<br>
+      Ad Content:\n<br>
+      {adtextareacontent}\n";
 
       $c_subj="Thank You From Bali Advertiser";
 
@@ -102,11 +130,66 @@ if (isset($_POST['ad_info'])){
 
     $c_msg="
 
-    Thank You From Bali Advertiser\n\nDear {name},\nThank you for subscribing to Bali Advertiser.\n\nFrom\t: {name}\nAddress\t: {address}\nCity\t: {city}\nState\t: {state}\nPostcode\t: {postcode}\nCountry\t: {country}\nEmail\t: {email}\nPhone\t: {phone}\nFax\t: {fax}\nCompany\t: {company}\nPayment Method\t: {payment}\nComments:\n{subscribecomments}\n\nYou have chosen to pay for your subscription by {payment}.";
+    Thank You From Bali Advertiser<br><br>\n\n
+    Dear {name},<br>\n
+    Thank you for subscribing to Bali Advertiser.<br><br>\n\n
+    <table>
+    <tr>
+    <td>From\t</td><td>: {name}\n</td>
+    </tr><tr>
+    <td>Address\t</td><td>: {address}\n</td>
+    </tr><tr>
+    <td>City\t</td><td>: {city}\n</td>
+    </tr><tr>
+    <td>State\t</td><td>: {state}\n</td>
+    </tr><tr>
+    <td>Postcode\t</td><td>: {postcode}\n</td>
+    </tr><tr>
+    <td>Country\t</td><td>: {country}\n</td>
+    </tr><tr>
+    <td>Email\t</td><td>: {email}\n</td>
+    </tr><tr>
+    <td>Phone\t</td><td>: {phone}\n</td>
+    </tr><tr>
+    <td>Fax\t</td><td>: {fax}\n</td>
+    </tr><tr>
+    <td>Company\t</td><td>: {company}\n</td>
+    </tr><tr>
+    <td>Payment Method\t</td><td>: {payment}\n</td>
+    </tr></table><br>
+    Comments:\n<br>
+    {subscribecomments}\n\n<br><br>
+    You have chosen to pay for your subscription by {payment}.";
 
     //$s_msg=file_get_contents(dirname(__FILE__)."/inc/mail_server.txt");
 
-    $s_msg="".$_POST['adtype']." Section\n\nFrom\t: {name}\nAddress\t: {address}\nCity\t: {city}\nState\t: {state}\nPostcode\t: {postcode}\nCountry\t: {country}\nEmail\t: {email}\nPhone\t: {phone}\nFax\t: {fax}\nCompany\t: {company}\nPayment Method\t: {payment}\n\nComments:\n{subscribecomments}\n";
+    $s_msg="".$_POST['adtype']." Section<br><br>\n\n
+    <table>
+    <tr>
+    <td>From\t</td><td>: {name}\n</td>
+    </tr><tr>
+    <td>Address\t</td><td>: {address}\n</td>
+    </tr><tr>
+    <td>City\t</td><td>: {city}\n</td>
+    </tr><tr>
+    <td>State\t</td><td>: {state}\n</td>
+    </tr><tr>
+    <td>Postcode\t</td><td>: {postcode}\n</td>
+    </tr><tr>
+    <td>Country\t</td><td>: {country}\n</td>
+    </tr><tr>
+    <td>Email\t</td><td>: {email}\n</td>
+    </tr><tr>
+    <td>Phone\t</td><td>: {phone}\n</td>
+    </tr><tr>
+    <td>Fax\t</td><td>: {fax}\n</td>
+    </tr><tr>
+    <td>Company\t</td><td>: {company}\n</td>
+    </tr><tr>
+    <td>Payment Method\t</td><td>: {payment}\n</td>
+    </tr></table><br>
+    Comments:\n<br>
+    {subscribecomments}\n<br><br>";
 
     $c_subj="Thank You From Bali Advertiser";
 
@@ -120,11 +203,53 @@ if (isset($_POST['ad_info'])){
 
       //$c_msg=file_get_contents(dirname(__FILE__)."/inc/mail_client.txt");
 
-      $c_msg="Thank You From Bali Advertiser\n\nDear {name},\nThank you for sending the following messsage to Bali Advertiser.\n\nFrom\t: {name}\nCompany\t: {company}\nAddress\t: {state}\n\t  {country}\n\t  {postcode}\nPhone\t: {phone}\nEmail\t: {email}\nSubject\t: {subject}\n\nComments:\n{comments}\n";
+      $c_msg="Thank You From Bali Advertiser<br><br>\n\n
+      Dear {name},<br>\n
+      Thank you for sending the following messsage to Bali Advertiser.<br><br>\n\n
+      <table>
+      <tr>
+      <td>From\t</td><td>: {name}\n</td>
+      </tr><tr>
+      <td>Company\t</td><td>: {company}\n</td>
+      </tr><tr>
+      <td>Address\t</td><td>: {state}\n</td>
+      </tr><tr>
+      <td>\t </td><td> {country}\n</td>
+      </tr><tr>
+      <td>\t </td><td> {postcode}\n</td>
+      </tr><tr>
+      <td>Phone\t</td><td>: {phone}\n</td>
+      </tr><tr>
+      <td>Email\t</td><td>: {email}\n</td>
+      </tr><tr>
+      <td>Subject\t</td><td>: {subject}\n\n</td>
+      </tr></table<br><br>
+      Comments:\n<br>
+      {comments}\n<br>";
 
       //$s_msg=file_get_contents(dirname(__FILE__)."/inc/mail_server.txt");
 
-      $s_msg="".$_POST['adtype']." Section\n\nFrom\t: {name}\nCompany\t: {company}\nAddress\t: {state}\n\t  {country}\n\t  {postcode}\nPhone\t: {phone}\nEmail\t: {email}\nSubject\t: {subject}\n\nComments:\n{comments}\n\n";
+      $s_msg="".$_POST['adtype']." Section<br><br>\n\n
+      <table>
+      <tr>
+      <td>From\t</td><td>: {name}\n</td>
+      </tr><tr>
+      <td>Company\t</td><td>: {company}\n</td>
+      </tr><tr>
+      <td>Address\t</td><td>: {state}\n</td>
+      </tr><tr>
+      <td>\t</td><td>  {country}\n</td>
+      </tr><tr>
+      <td>\t</td><td>  {postcode}\n</td>
+      </tr><tr>
+      <td>Phone\t</td><td>: {phone}\n</td>
+      </tr><tr>
+      <td>Email\t</td><td>: {email}\n</td>
+      </tr><tr>
+      <td>Subject\t</td><td>: {subject}\n\n</td>
+      </tr></table><br><br>
+      Comments:\n<br>
+      {comments}\n\n<br><br>";
 
       $c_subj="Thank You From Bali Advertiser";
 
@@ -162,15 +287,78 @@ if (isset($_POST['ad_info'])){
       if($data["premium"] != ""){
         $data["cpremium"] = "You have chosen RED Text for your Ad";
         $data["premium"] = "This is a Red Text Ad";
+        $color = "red";
       }else{
         $data["premium"] = "This is NOT a Red Text Ad";
+        $color = "black";
       }
 
-      $c_msg="Thank You From Bali Advertiser\n\nDear {name},\nThank you for placing the following ad in Bali Advertiser.\n\nAd Type\t: ".$_POST['adtype']."\nFrom\t: {name}\nPhone\t: {phone}\nEmail\t: {email}\n{location}\n\nAd Content: \n{adtextareacontent}\n\nNumber Of Words\t: {wc}\nPrice Per Word\t: Rp {price_word} ".$min30words."\nPrice Per Issue\t: Rp {price_issue}\nNo. Of Issues\t: {issues}\nPayment Due\t: Rp {total}\nPayment Method\t: {payment}\n{cpremium}\n\nYou have chosen to pay for your ad by {payment}, please note that no ads will be printed before payment is made.\n";
+      $c_msg="Thank You From Bali Advertiser<br><br>\n\n
+      Dear {name},<br>\n
+      Thank you for placing the following ad in Bali Advertiser.<br><br>\n\n
+      <table>
+      <tr>
+      <td>Ad Type\t</td><td>: ".$_POST['adtype']."</td>\n
+      </tr><tr>
+      <td>From\t</td><td>: {name}</td>\n
+      </tr><tr>
+      <td>Phone\t</td><td>: {phone}</td>\n
+      </tr><tr>
+      <td>Email\t</td><td>: {email}</td>\n
+      </tr><tr>
+      <td colspan='2'>{location}</td>\n\n
+      </tr><tr>
+      <td colspan='2'>{cpremium}</td>\n\n
+      </tr></table><br><br>
+      Ad Content: <br>\n
+      <span style='color:". $color.";'>{adtextareacontent}</span><br><br>\n\n
+      <table>
+      <tr>
+      <td>Number Of Words\t</td><td>: {wc}</td>\n
+      </tr><tr>
+      <td>Price Per Word\t</td><td>: Rp {price_word} ".$min30words."</td>\n
+      </tr><tr>
+      <td>Price Per Issue\t</td><td>: Rp {price_issue}</td>\n
+      </tr><tr>
+      <td>No. Of Issues\t</td><td>: {issues}</td>\n
+      </tr><tr>
+      <td>Payment Due\t</td><td>: Rp {total}</td>\n
+      </tr><tr>
+      <td>Payment Method\t</td><td>: {payment}</td>\n
+      </tr></table><br><br>\n\n
+      You have chosen to pay for your ad by {payment}, please note that no ads will be printed before payment is made.<br>\n";
 
       //$s_msg=file_get_contents(dirname(__FILE__)."/inc/mail_server_ads.txt");
 
-      $s_msg="".$_POST['adtype']." Section\n\nFrom\t: {name}\nPhone\t: {phone}\nEmail\t: {email}\n{location}\nAd Content:\n{adtextareacontent}\n\nNumber Of Words\t: {wc}\nPrice Per Word\t: Rp {price_word} ".$min30words."\nPrice Per Issue\t: Rp {price_issue}\nNo. Of Issues\t: {issues}\nPayment Due\t: Rp {total}\nPayment Method\t: {payment}\n{premium}\n";
+      $s_msg="".$_POST['adtype']." Section<br><br>\n\n
+      <table>
+      <tr>
+      <td>From\t</td><td>: {name}</td>\n
+      </tr><tr>
+      <td>Phone\t</td><td>: {phone}</td>\n
+      </tr><tr>
+      <td>Email\t</td><td>: {email}</td>\n
+      </tr><tr>
+      <td colspan='2'>{location}</td><br>\n
+      </tr><tr>
+      <td colspan='2'>{premium}</td>\n\n
+      </tr></table><br><br>
+      Ad Content:<br>\n
+      <span style='color:". $color.";'>{adtextareacontent}</span><br><br>\n\n
+      <table>
+      <tr>
+      <td>Number Of Words\t</td><td>: {wc}</td>\n
+      </tr><tr>
+      <td>Price Per Word\t</td><td>: Rp {price_word} ".$min30words."</td>\n
+      </tr><tr>
+      <td>Price Per Issue\t</td><td>: Rp {price_issue}</td>\n
+      </tr><tr>
+      <td>No. Of Issues\t</td><td>: {issues}</td>\n
+      </tr><tr>
+      <td>Payment Due\t</td><td>: Rp {total}</td>\n
+      </tr><tr>
+      <td>Payment Method\t</td><td>: {payment}</td>\n
+      </tr></table><br>";
 
       $c_subj="Thank You From Bali Advertiser";
 
@@ -272,7 +460,7 @@ if (isset($_POST['ad_info'])){
 
   $sheaders = "MIME-Version: 1.0" . "\r\n";
 
-  $sheaders .= "Content-Type: text/plain; charset=utf-8\r\n";
+  $sheaders .= "Content-Type: text/html; charset=utf-8\r\n";
 
   $sheaders .= 'From: '.$email."\r\n";
 
@@ -288,7 +476,7 @@ if (isset($_POST['ad_info'])){
 
   $cheaders = "MIME-Version: 1.0" . "\r\n";
 
-  $cheaders .= "Content-Type: text/plain; charset=utf-8\r\n";
+  $cheaders .= "Content-Type: text/html; charset=utf-8\r\n";
 
   $cheaders .= 'From: Baliadvertiser <info@baliadvertiser.biz>' . "\r\n";
 
@@ -507,6 +695,9 @@ For International Transfers The Sender Must Pay All Charges So That Bali Adverti
 
       <?php } ?>
 
+      <tr id="isPremium" style="display:none;">
+        <td colspan="2" style="text-transform:capitalize"> You have chosen <span style="color:red;">RED</span> text for your Ad. </td>
+      </tr>
       </table>
 
       <?php  if(isset($data['subscribecomments'])) { ?>
@@ -548,6 +739,7 @@ For International Transfers The Sender Must Pay All Charges So That Bali Adverti
         //alert("doc read 1");
         if($('#premium').is(':checked')){
           $('#your-ad-text').css('color', '#f00');
+          $('#isPremium').fadeIn();
         }
 
 
@@ -823,7 +1015,7 @@ For International Transfers The Sender Must Pay All Charges So That Bali Adverti
 
       #ad_form td { vertical-align:middle; }
 
-      #ad_form .important { color:red; position:relative; top:-30px; right:3px; text-align:right; height:0px; font-size:3em; }
+      #ad_form .important { color:#005aaa; position:relative; top:-30px; right:3px; text-align:right; height:0px; font-size:3em; }
 
       #ad_form input.error { border:1px solid red;}
 
@@ -1212,19 +1404,13 @@ For International Transfers The Sender Must Pay All Charges So That Bali Adverti
 
         <?php if (!in_array($q,array("private"))) { ?>
           <p style="margin: 0 0;">
-            Your ad can be printed in RED text for extra cost. Click below to choose RED text.
+            Your ad can be printed in <span style="color:red;">RED</span> text for extra cost. Click below to choose <span style="color:red;">RED</span> text.
           </p>
         <?php } ?>
 
         <div class="important" style="top:10px;">*</div>
 
         <textarea id="adtextareacontent" name="adtextareacontent" required="required" rows="10" placeholder="Enter your ad content here including a contact phone number or email address for replies to this ad."></textarea>
-
-        <?php if (!in_array($q,array("private"))) { ?>
-        <p style="margin: 0 0;">
-          <a class="premium-text-activation-button" id="premium-text-activation-button">CLICK HERE</a> to have your text printed in RED for cost of Rp <?= number_format($ads[$q]["premium-cost"])?> per word.
-        </p>
-        <?php } ?>
 
         <div class="footnote">* Please ensure that you have included your contact phone number and/or e-mail address for replies to this ad in the ad text that you are typing here.<br>
 
@@ -1242,6 +1428,12 @@ For International Transfers The Sender Must Pay All Charges So That Bali Adverti
 
         </div>
 
+        <?php if (!in_array($q,array("private"))) { ?>
+        <p style="margin: 0 0;clear: both;text-align: center;">
+          <a class="premium-text-activation-button" id="premium-text-activation-button">CLICK HERE</a> to have your text printed in <span style="color:red;">RED</span> for cost of Rp <?= number_format($ads[$q]["premium-cost"])?> per word.
+        </p>
+        <?php } ?>
+
           <?php } elseif(in_array($q,array("subscribe"))) { ?>
 
         <?php } else { ?>
@@ -1254,7 +1446,7 @@ For International Transfers The Sender Must Pay All Charges So That Bali Adverti
 
         <h3>CONTACT US</h3>
 
-        <p style="text-align:center">
+        <!--<p style="text-align:center">
 
           Street Address :<br>
 
@@ -1272,7 +1464,25 @@ For International Transfers The Sender Must Pay All Charges So That Bali Adverti
 
         <div style="text-align:center; margin-bottom:15px;" class="col-sm-4">E-mail: <a href="mailto:info@baliadvertiser.biz">info@baliadvertiser.biz</a></div>
 
-        <div style="text-align:center; margin-bottom:15px;" class="col-sm-4">Fax: +62 (0)361 764191</div>
+        <div style="text-align:center; margin-bottom:15px;" class="col-sm-4">Fax: +62 (0)361 764191</div>-->
+
+<div style="text-align:center; margin-bottom:15px;" class="col-sm-6"> <p style="text-align: center;">
+          Street Address :<br>
+
+          Bali Advertiser<br>
+
+          Jl. Majapahit No. 46<br>
+
+          Kuta, Bali, Indonesia</p>
+</div>
+<div style="text-align:center; margin-bottom:15px;" class="col-sm-6"><p style="text-align: center;">
+  E-mail: <a href="mailto:info@baliadvertiser.biz">info@baliadvertiser.biz</a><br>
+  Tel: +62 (0)361 755392 [Hunting]
+
+<br>764102, 755390, 750980, 757376, 750071.
+
+  <br> Fax: +62 (0)361 764191</p>
+</div>
 
 
 
